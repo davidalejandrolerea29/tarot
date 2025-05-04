@@ -24,13 +24,16 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
     >
       <div className="flex items-center space-x-3">
         {/* Button for the hamburger menu, visible only in small screens */}
-        <button
-          onClick={toggleSidebar}
-          className="p-2 rounded-full hover:bg-indigo-800 transition-colors md:hidden"
-          aria-label="Toggle menu"
-        >
-          <Menu size={24} />
-        </button>
+        {currentUser && (
+          <button
+            onClick={toggleSidebar}
+            className="p-2 rounded-full hover:bg-indigo-800 transition-colors"
+            aria-label="Toggle menu"
+          >
+            <Menu size={24} />
+          </button>
+        )}
+
 
         <Link to="/" className="flex items-center space-x-2">
           <Star className="h-8 w-8 text-yellow-400" />

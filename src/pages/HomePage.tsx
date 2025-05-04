@@ -13,7 +13,23 @@ const HomePage: React.FC = () => {
   
   const handleStartReading = (spreadId: string) => {
     if (currentUser) {
-      navigate(`/reading/${spreadId}`);
+      let path = '/reading';
+  
+      switch (spreadId) {
+        case 'single':
+          path += '/one-card';
+          break;
+        case 'past-present-future':
+          path += '/three-cards';
+          break;
+        case 'celtic-cross':
+          path += '/celtic-cross';
+          break;
+        default:
+          path += '/one-card'; // fallback
+      }
+  
+      navigate(path);
     } else {
       signInWithGoogle();
     }
